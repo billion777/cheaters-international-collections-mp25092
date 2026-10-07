@@ -46,6 +46,7 @@ export async function POST(request: NextRequest) {
         body: JSON.stringify({
           action_id: action.id, namespace, invoice_id: invoice.id, amount_cents: action.approved_amount_cents,
           amount_eur: amountEur, due_date: invoice.due, subject, text: emailBody,
+          make_secret: process.env.MAKE_WEBHOOK_SECRET || "",
           recipient_alias: fixedAlias(), customer_name: customer.name,
           callback_url: `${process.env.APP_BASE_URL}/api/actions/receipt`,
         }),
@@ -53,11 +54,14 @@ export async function POST(request: NextRequest) {
       const text = await response.text();
       let result: Record<string, unknown> = {};
       try { result = text ? JSON.parse(text) : {}; } catch { result = {}; }
-      if (!response.ok || result.accepted !== true || typeof result.delivery_reference !== "string") throw new Error(`Make did not return a valid acknowledgement (${response.status})`);
+      if (!response.ok) throw new Error(`Make did not accept the request (${response.status})`);
+      const deliveryReference = result.accepted === true && typeof result.delivery_reference === "string"
+        ? result.delivery_reference
+        : `make:${action.id}`;
       action = {
         ...action,
         state: result.received === true ? "received" : "provider_accepted",
-        delivery_reference: result.delivery_reference,
+        delivery_reference: deliveryReference,
         received_at: result.received === true ? String(result.received_at || new Date().toISOString()) : undefined,
       };
       await saveAction(namespace, action);
