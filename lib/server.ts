@@ -44,8 +44,8 @@ async function writeRecords(namespace: string, records: { kind: Kind; recordId: 
     const batch = records.slice(i, i + 10);
     const updates = batch.filter((row) => existing.has(`${row.kind}:${row.recordId}`));
     const creates = batch.filter((row) => !existing.has(`${row.kind}:${row.recordId}`));
-    if (updates.length) await airtable("?typecast=true", { method: "PATCH", body: JSON.stringify({ records: updates.map((row) => ({ id: existing.get(`${row.kind}:${row.recordId}`), fields: { Namespace: namespace, Kind: row.kind, RecordId: row.recordId, Payload: JSON.stringify(row.payload) } })) }) });
-    if (creates.length) await airtable("?typecast=true", { method: "POST", body: JSON.stringify({ records: creates.map((row) => ({ fields: { Namespace: namespace, Kind: row.kind, RecordId: row.recordId, Payload: JSON.stringify(row.payload) } })) }) });
+    if (updates.length) await airtable("", { method: "PATCH", body: JSON.stringify({ typecast: true, records: updates.map((row) => ({ id: existing.get(`${row.kind}:${row.recordId}`), fields: { Namespace: namespace, Kind: row.kind, RecordId: row.recordId, Payload: JSON.stringify(row.payload) } })) }) });
+    if (creates.length) await airtable("", { method: "POST", body: JSON.stringify({ typecast: true, records: creates.map((row) => ({ fields: { Namespace: namespace, Kind: row.kind, RecordId: row.recordId, Payload: JSON.stringify(row.payload) } })) }) });
   }
 }
 
