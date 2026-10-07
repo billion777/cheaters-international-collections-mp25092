@@ -30,12 +30,22 @@ export async function POST(request: NextRequest) {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 12_000);
     try {
+      const amountEur = (action.approved_amount_cents! / 100).toFixed(2);
+      const subject = `[FICTIONAL TEST] Payment reminder ${action.id} | ${invoice.id} | EUR ${amountEur} | due ${invoice.due}`;
+      const emailBody = [
+        "This is a fictional coursework test reminder. No real payment is requested.",
+        `Customer: ${customer.name}`,
+        `Action ID: ${action.id}`,
+        `Invoice ID: ${invoice.id}`,
+        `Amount due: EUR ${amountEur}`,
+        `Original due date: ${invoice.due}`,
+      ].join("\n");
       const response = await fetch(process.env.MAKE_WEBHOOK_URL!, {
         method: "POST", signal: controller.signal,
         headers: { "content-type": "application/json", "x-make-secret": process.env.MAKE_WEBHOOK_SECRET || "" },
         body: JSON.stringify({
           action_id: action.id, namespace, invoice_id: invoice.id, amount_cents: action.approved_amount_cents,
-          amount_eur: (action.approved_amount_cents! / 100).toFixed(2), due_date: invoice.due,
+          amount_eur: amountEur, due_date: invoice.due, subject, text: emailBody,
           recipient_alias: fixedAlias(), customer_name: customer.name,
           callback_url: `${process.env.APP_BASE_URL}/api/actions/receipt`,
         }),
