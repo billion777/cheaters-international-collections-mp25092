@@ -8,12 +8,13 @@
   "test_route": "https://mp25092-vercel.vercel.app",
   "ledger_read_route": "https://mp25092-vercel.vercel.app/api/namespaces/ci-practice-v3",
   "delivery_verification_route": "https://eu1.make.com/3083425/scenarios/7822202/edit",
-  "test_access_instructions": "Use the privately supplied limited REVIEW_TOKEN with the dashboard or collections-skill CLI. No account setup is required for the reviewer. Airtable and inbox read access are shared separately through the private course route.",
+  "test_access_instructions": "Use the privately supplied limited REVIEW_TOKEN with the dashboard or collections-skill CLI. No account setup is required for the reviewer. See TEST_EVIDENCE.md for the live financial, stale-action, delivery and duplicate-suppression results. Airtable and inbox read access are shared separately through the private course route.",
   "practice_results": "practice_results.json",
   "fixed_recipient_alias": "HOMEWORK_TEST_INBOX",
   "real_send_limit_per_review": 3,
   "known_limitations": [
     "Airtable, Make and the dedicated Gmail inbox require the privately supplied reviewer access; no credentials are stored in GitHub.",
-    "The Make delivery scenario uses a fixed dedicated test inbox and intentionally refuses recipient addresses supplied by callers."
+    "The Make delivery scenario uses a fixed dedicated test inbox and intentionally refuses recipient addresses supplied by callers.",
+    "The submitted delivery receipt was verified in the actual Gmail inbox and recorded through the review-authenticated manual confirmation route. The token-protected callback route for an automatic Make inbox watcher is implemented, but a separate watcher scenario is not currently configured."
   ]
 }

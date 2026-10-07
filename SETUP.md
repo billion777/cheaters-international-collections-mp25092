@@ -16,10 +16,12 @@ The generic record table still preserves the five required record kinds: `custom
 
 ## 2. Make and the dedicated test inbox
 
-Create a dedicated test mailbox that is not your everyday address. Build two Make scenarios:
+Create a dedicated test mailbox that is not your everyday address. The deployed submission currently has the sequential delivery scenario below. Its completed live delivery test and manual inbox verification are documented in `TEST_EVIDENCE.md`.
+
+For fully automatic receipt confirmation, build the second watcher scenario described below:
 
 1. **Sequential delivery scenario:** Custom Webhook → verify `x-make-secret` → reject unless `recipient_alias` equals `HOMEWORK_TEST_INBOX` → send email to a recipient address hard-coded in the email module → Webhook Response. Turn sequential processing on and set the response to JSON such as `{"accepted":true,"delivery_reference":"{{messageId}}"}`. Include action ID, invoice ID, EUR amount, and due date in both subject and body. Never map a request field into the email To field.
-2. **Inbox receipt scenario:** Watch the dedicated inbox → extract the action ID, invoice ID, amount, due date, and provider message/delivery reference → POST them to `callback_url` with header `x-make-callback-token`. The JSON body is `namespace`, `action_id`, `invoice_id`, `amount_cents`, `due_date`, `delivery_reference`, and `received_at`. This watcher proves arrival in the actual inbox; the first webhook acknowledgement alone does not.
+2. **Inbox receipt scenario (not yet configured in Make):** Watch the dedicated inbox → extract the action ID, invoice ID, amount, due date, and provider message/delivery reference → POST them to `callback_url` with header `x-make-callback-token`. The JSON body is `namespace`, `action_id`, `invoice_id`, `amount_cents`, `due_date`, `delivery_reference`, and `received_at`. This watcher proves arrival in the actual inbox; the first webhook acknowledgement alone does not. Until it is configured, an authorised reviewer who has visually verified the inbox can submit the same evidence to `/api/actions/confirm-receipt` with the review token.
 
 If Make or the inbox result is ambiguous, the app records `stopped` and will not retry.
 
