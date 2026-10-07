@@ -5,6 +5,12 @@ import type { Ledger, ReminderAction } from "./types";
 type Kind = "customer" | "invoice" | "event" | "case" | "action";
 type Stored = { airtableId: string; namespace: string; kind: Kind; recordId: string; payload: unknown };
 
+const normaliseKind = (value: unknown): Kind => {
+  const candidate = Array.isArray(value) ? value[0] : value;
+  if (["customer", "invoice", "event", "case", "action"].includes(String(candidate))) return String(candidate) as Kind;
+  throw new Error(`Unsupported Airtable Kind value: ${JSON.stringify(value)}`);
+};
+
 const requiredEnv = (name: string) => {
   const value = process.env[name];
   if (!value) throw new Error(`Server is not configured: missing ${name}`);
@@ -31,7 +37,7 @@ async function listStored(namespace: string): Promise<Stored[]> {
     const body = await airtable(`?${query}`);
     for (const row of body.records || []) {
       const fields = row.fields || {};
-      output.push({ airtableId: row.id, namespace: fields.Namespace, kind: fields.Kind, recordId: fields.RecordId, payload: JSON.parse(fields.Payload || "null") });
+      output.push({ airtableId: row.id, namespace: fields.Namespace, kind: normaliseKind(fields.Kind), recordId: fields.RecordId, payload: JSON.parse(fields.Payload || "null") });
     }
     offset = body.offset || "";
   } while (offset);
