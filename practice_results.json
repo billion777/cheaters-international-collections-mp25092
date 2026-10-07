@@ -1,0 +1,13 @@
+{
+  "namespace":"ci-practice-v3",
+  "as_of":"2027-03-15",
+  "invoices":[
+    {"id":"I1","outstanding_cents":6000,"customer_credit_cents":0,"overdue_days":5,"age_band":"1_7","disputed_cents":3000,"eligible_cents":3000,"reasons":["disputed_part"]},
+    {"id":"I2","outstanding_cents":0,"customer_credit_cents":0,"overdue_days":10,"age_band":"8_30","disputed_cents":0,"eligible_cents":0,"reasons":["no_debt"]},
+    {"id":"I3","outstanding_cents":24900,"customer_credit_cents":0,"overdue_days":3,"age_band":"1_7","disputed_cents":0,"eligible_cents":0,"reasons":["unallocated_payment"]},
+    {"id":"I4","outstanding_cents":1990,"customer_credit_cents":0,"overdue_days":5,"age_band":"1_7","disputed_cents":0,"eligible_cents":0,"reasons":["promise"]},
+    {"id":"I5","outstanding_cents":9400,"customer_credit_cents":0,"overdue_days":0,"age_band":"current","disputed_cents":0,"eligible_cents":0,"reasons":["not_overdue"]},
+    {"id":"I6","outstanding_cents":0,"customer_credit_cents":2000,"overdue_days":10,"age_band":"8_30","disputed_cents":0,"eligible_cents":0,"reasons":["no_debt"]}
+  ],
+  "totals":{"outstanding_cents":42290,"customer_credit_cents":2000,"overdue_cents":32890,"disputed_cents":3000,"unallocated_cents":10000,"cash_received_cents":28900,"cash_refunded_cents":7900,"net_cash_cents":21000,"eligible_cents":3000,"ageing_cents":{"current":9400,"1_7":32890,"8_30":0,"31_plus":0}}
+}

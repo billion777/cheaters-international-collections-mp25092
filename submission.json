@@ -1,0 +1,18 @@
+{
+  "version": "3.0",
+  "student_name": "Maksims Panuskins",
+  "student_id": "mp25092",
+  "skill_zip": "collections-skill-mp25092.zip",
+  "skill_entrypoint": "collections-skill/SKILL.md",
+  "setup_instructions": "SETUP.md",
+  "test_route": "SET_AFTER_VERCEL_DEPLOYMENT",
+  "ledger_read_route": "SET_TO_AIRTABLE_READ_ONLY_VIEW_OR_DEPLOYED_API_ROUTE",
+  "delivery_verification_route": "SET_TO_DEDICATED_TEST_INBOX_OR_PROVIDER_RECEIPT_VIEW",
+  "test_access_instructions": "Use the privately supplied limited REVIEW_TOKEN with the dashboard or collections-skill CLI. No account setup is required for the reviewer. Airtable and inbox read access are shared separately through the private course route.",
+  "practice_results": "practice_results.json",
+  "fixed_recipient_alias": "HOMEWORK_TEST_INBOX",
+  "real_send_limit_per_review": 3,
+  "known_limitations": [
+    "The three external routes must be filled after Vercel, Airtable, Make and the dedicated test inbox are configured; no credentials are stored in GitHub."
+  ]
+}

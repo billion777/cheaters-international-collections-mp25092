@@ -1,0 +1,31 @@
+{
+  "namespace": "ci-practice-v3",
+  "customers": [
+    {"id":"C1","name":"Alibi Academy","recipient_alias":"HOMEWORK_TEST_INBOX"},
+    {"id":"C2","name":"Deadline Survivors","recipient_alias":"HOMEWORK_TEST_INBOX"},
+    {"id":"C3","name":"Originality Optional","recipient_alias":"HOMEWORK_TEST_INBOX"},
+    {"id":"C4","name":"Tomorrow Definitely","recipient_alias":"HOMEWORK_TEST_INBOX"}
+  ],
+  "invoices": [
+    {"id":"I1","customer_id":"C1","issued":"2027-03-01","due":"2027-03-10","amount_cents":12000},
+    {"id":"I2","customer_id":"C2","issued":"2027-03-01","due":"2027-03-05","amount_cents":7900},
+    {"id":"I3","customer_id":"C3","issued":"2027-03-01","due":"2027-03-12","amount_cents":24900},
+    {"id":"I4","customer_id":"C4","issued":"2027-03-01","due":"2027-03-10","amount_cents":1990},
+    {"id":"I5","customer_id":"C1","issued":"2027-03-01","due":"2027-03-15","amount_cents":9400},
+    {"id":"I6","customer_id":"C2","issued":"2027-03-01","due":"2027-03-05","amount_cents":5000}
+  ],
+  "events": [
+    {"ref":"P1","seq":1,"date":"2027-03-02","type":"payment","amount_cents":4000,"invoice_id":"I1","customer_id":"C1"},
+    {"ref":"CN1","seq":2,"date":"2027-03-03","type":"credit","amount_cents":2000,"invoice_id":"I1","customer_id":"C1"},
+    {"ref":"P2","seq":3,"date":"2027-03-02","type":"payment","amount_cents":7900,"invoice_id":"I2","customer_id":"C2"},
+    {"ref":"CN2","seq":4,"date":"2027-03-04","type":"credit","amount_cents":7900,"invoice_id":"I2","customer_id":"C2"},
+    {"ref":"RF2","seq":5,"date":"2027-03-04","type":"refund","amount_cents":7900,"invoice_id":"I2","customer_id":"C2"},
+    {"ref":"P3","seq":6,"date":"2027-03-03","type":"payment","amount_cents":10000,"invoice_id":null,"customer_id":"C3"},
+    {"ref":"P6","seq":7,"date":"2027-03-03","type":"payment","amount_cents":7000,"invoice_id":"I6","customer_id":"C2"}
+  ],
+  "cases": [
+    {"id":"D1","invoice_id":"I1","type":"dispute","opened":"2027-03-04","closed":null,"amount_cents":3000,"promised_date":null},
+    {"id":"PR4","invoice_id":"I4","type":"promise","opened":"2027-03-11","closed":null,"amount_cents":0,"promised_date":"2027-03-15"}
+  ],
+  "actions": []
+}
