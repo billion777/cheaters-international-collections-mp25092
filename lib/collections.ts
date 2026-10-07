@@ -144,6 +144,7 @@ export function calculatePlan(ledger: Ledger, asOf: string): Plan {
     totals.eligible_cents += invoice.eligible_cents;
     totals.ageing_cents[invoice.age_band] += invoice.outstanding_cents;
   }
+  invoicePlans.sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true }));
   return { namespace: ledger.namespace, as_of: asOf, invoices: invoicePlans, totals };
 }
 
