@@ -2,6 +2,12 @@
 
 This submission belongs to **Maksims Panuskins (mp25092)**. All records and recipients must remain fictional.
 
+Deployed test route: <https://mp25092-vercel.vercel.app>
+
+Source repository: <https://github.com/billion777/cheaters-international-collections-mp25092>
+
+Configured Make delivery scenario: <https://eu1.make.com/3083425/scenarios/7822202/edit>
+
 ## 1. Airtable
 
 Create a homework-only base and one table named `CollectionsRecords`. Add four single-line text fields with these exact names: `Namespace`, `Kind`, `RecordId`, and `Payload`. Keep Airtable's primary field if required; it is not used. Create a personal access token limited to record read/write access for this base only. Do not commit it.

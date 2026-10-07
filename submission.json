@@ -5,14 +5,15 @@
   "skill_zip": "collections-skill-mp25092.zip",
   "skill_entrypoint": "collections-skill/SKILL.md",
   "setup_instructions": "SETUP.md",
-  "test_route": "SET_AFTER_VERCEL_DEPLOYMENT",
-  "ledger_read_route": "SET_TO_AIRTABLE_READ_ONLY_VIEW_OR_DEPLOYED_API_ROUTE",
-  "delivery_verification_route": "SET_TO_DEDICATED_TEST_INBOX_OR_PROVIDER_RECEIPT_VIEW",
+  "test_route": "https://mp25092-vercel.vercel.app",
+  "ledger_read_route": "https://mp25092-vercel.vercel.app/api/namespaces/ci-practice-v3",
+  "delivery_verification_route": "https://eu1.make.com/3083425/scenarios/7822202/edit",
   "test_access_instructions": "Use the privately supplied limited REVIEW_TOKEN with the dashboard or collections-skill CLI. No account setup is required for the reviewer. Airtable and inbox read access are shared separately through the private course route.",
   "practice_results": "practice_results.json",
   "fixed_recipient_alias": "HOMEWORK_TEST_INBOX",
   "real_send_limit_per_review": 3,
   "known_limitations": [
-    "The three external routes must be filled after Vercel, Airtable, Make and the dedicated test inbox are configured; no credentials are stored in GitHub."
+    "Airtable, Make and the dedicated Gmail inbox require the privately supplied reviewer access; no credentials are stored in GitHub.",
+    "The Make delivery scenario uses a fixed dedicated test inbox and intentionally refuses recipient addresses supplied by callers."
   ]
 }
