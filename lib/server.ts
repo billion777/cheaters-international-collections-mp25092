@@ -6,7 +6,11 @@ type Kind = "customer" | "invoice" | "event" | "case" | "action";
 type Stored = { airtableId: string; namespace: string; kind: Kind; recordId: string; payload: unknown };
 
 const normaliseKind = (value: unknown): Kind => {
-  const candidate = Array.isArray(value) ? value[0] : value;
+  const candidate = Array.isArray(value)
+    ? value[0]
+    : value && typeof value === "object" && "value" in value
+      ? (value as { value: unknown }).value
+      : value;
   if (["customer", "invoice", "event", "case", "action"].includes(String(candidate))) return String(candidate) as Kind;
   throw new Error(`Unsupported Airtable Kind value: ${JSON.stringify(value)}`);
 };
@@ -88,7 +92,7 @@ export async function countSessionDispatches(sessionId: string) {
   let offset = "";
   let count = 0;
   do {
-    const query = new URLSearchParams({ filterByFormula: `{Kind}='action'`, pageSize: "100" });
+    const query = new URLSearchParams({ pageSize: "100" });
     if (offset) query.set("offset", offset);
     const body = await airtable(`?${query}`);
     for (const row of body.records || []) {
