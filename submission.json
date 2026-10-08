@@ -8,7 +8,7 @@
   "test_route": "https://mp25092-vercel.vercel.app/review",
   "ledger_read_route": "https://mp25092-vercel.vercel.app/api/review/plan",
   "delivery_verification_route": "https://eu1.make.com/3083425/scenarios/7822202/edit",
-  "test_access_instructions": "Open the test route with no login or token. It provides a fixed read-only live Airtable plan for ci-practice-v3, the restricted received-action evidence route, and links to the skill ZIP, instructions, expected output and TEST_EVIDENCE.md. It cannot import, authorise, dispatch or access another namespace.",
+  "test_access_instructions": "Open the test route with no login or token. It provides a fixed read-only live Airtable plan for ci-practice-mp25092, the restricted received-action evidence route, and links to the skill ZIP, instructions, expected output and TEST_EVIDENCE.md. It cannot import, authorise, dispatch or access another namespace.",
   "practice_results": "practice_results.json",
   "fixed_recipient_alias": "HOMEWORK_TEST_INBOX",
   "real_send_limit_per_review": 3,

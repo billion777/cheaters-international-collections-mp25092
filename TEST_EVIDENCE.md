@@ -6,7 +6,8 @@ Production route: <https://mp25092-vercel.vercel.app>
 
 ## Financial cases
 
-- Official namespace: `ci-practice-v3`
+- Original test namespace: `ci-practice-v3`
+- Clean restricted reviewer namespace: `ci-practice-mp25092` (same supplied records, no actions)
 - As-of date: `2027-03-15`
 - The live `/api/plan` JSON was compared with `practice_expected.json` using a structural JSON equality check: `true`.
 - Totals: outstanding EUR 422.90; customer credit EUR 20.00; overdue EUR 328.90; disputed EUR 30.00; unallocated EUR 100.00; cash received EUR 289.00; refunds EUR 79.00; net cash EUR 210.00; eligible EUR 30.00.
