@@ -6,6 +6,8 @@ export const dynamic = "force-dynamic";
 
 const euro = (cents: number) => new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR" }).format(cents / 100);
 const repo = "https://github.com/billion777/cheaters-international-collections-mp25092";
+const airtableEvidence = "https://airtable.com/app1PIMoXvc7LaE8S/shrCFhltPJgDTkQTk";
+const originalEmail = "https://drive.google.com/file/d/145I0KCoRRbCtZmwssg95W9pjlETPO4ka/view?usp=sharing";
 
 export default async function ReviewPage() {
   const [planLedger, actionLedger] = await Promise.all([
@@ -43,6 +45,14 @@ export default async function ReviewPage() {
       <div className={`state ${action?.state}`}>{action?.state || "not found"}</div>
       <p className="evidence">Delivery reference: <code>{action?.delivery_reference}</code> · received {action?.received_at}</p>
       <p><a href="/api/review/action">Open the restricted live Airtable action JSON</a></p>
+      <p><a href={airtableEvidence}>Open the direct read-only Airtable view (received + cancelled actions)</a></p>
+    </section>
+
+    <section className="panel">
+      <p className="kicker">ORIGINAL INBOX EVIDENCE</p><h2>Received Gmail message</h2>
+      <p className="status">Original <code>.eml</code> with message headers, action ID, invoice, amount and due date. Viewer access is granted to <code>ugiss457@gmail.com</code>.</p>
+      <p><a href={originalEmail}>Open the original received message in Google Drive</a></p>
+      <p className="evidence">This is the existing receipt for <code>RA-5dec646d5e99dd8e</code>. No message was resent.</p>
     </section>
 
     <section className="panel">
@@ -54,7 +64,7 @@ export default async function ReviewPage() {
         <a href={`${repo}/blob/main/TEST_EVIDENCE.md`}>Open test evidence</a>
         <a href={`${repo}/blob/main/SETUP.md`}>Open setup instructions</a>
       </div>
-      <p className="status">The received action above is the original completed test. Do not resend it for review.</p>
+      <p className="status">The received action and linked original email are the existing completed test. Do not resend it for review.</p>
     </section>
 
     <footer><span>Maksims Panuskins · mp25092</span><span>Fictional data only · reviewer route is read-only</span></footer>
@@ -64,4 +74,3 @@ export default async function ReviewPage() {
 function Metric({ label, value, accent = false }: { label: string; value: string; accent?: boolean }) {
   return <div className={`metric ${accent ? "accent" : ""}`}><span>{label}</span><strong>{value}</strong></div>;
 }
-

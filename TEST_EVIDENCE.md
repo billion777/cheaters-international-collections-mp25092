@@ -32,6 +32,9 @@ Production route: <https://mp25092-vercel.vercel.app>
 - Inbox receipt was manually verified and attached through the review-authenticated `/api/actions/confirm-receipt` route.
 - Final action state: `received`; delivery reference: `make:RA-5dec646d5e99dd8e`.
 - A second dispatch request returned `dispatched: false` and `duplicate_suppressed: true`; the Gmail search still showed one message.
+- Direct read-only Airtable evidence (limited to the received and cancelled homework actions): <https://airtable.com/app1PIMoXvc7LaE8S/shrCFhltPJgDTkQTk>
+- Original received Gmail message (`.eml`, shared as Viewer with `ugiss457@gmail.com`): <https://drive.google.com/file/d/145I0KCoRRbCtZmwssg95W9pjlETPO4ka/view?usp=sharing>
+- The `.eml` preserves the original headers and was downloaded from the existing Gmail message; no reminder was resent for this evidence update.
 
 ## Safety observation
 

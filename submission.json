@@ -7,13 +7,15 @@
   "setup_instructions": "SETUP.md",
   "test_route": "https://mp25092-vercel.vercel.app/review",
   "ledger_read_route": "https://mp25092-vercel.vercel.app/api/review/plan",
+  "airtable_action_view": "https://airtable.com/app1PIMoXvc7LaE8S/shrCFhltPJgDTkQTk",
+  "original_received_email": "https://drive.google.com/file/d/145I0KCoRRbCtZmwssg95W9pjlETPO4ka/view?usp=sharing",
   "delivery_verification_route": "https://eu1.make.com/3083425/scenarios/7822202/edit",
-  "test_access_instructions": "Open the test route with no login or token. It provides a fixed read-only live Airtable plan for ci-practice-mp25092, the restricted received-action evidence route, and links to the skill ZIP, instructions, expected output and TEST_EVIDENCE.md. It cannot import, authorise, dispatch or access another namespace.",
+  "test_access_instructions": "Open the test route with no login or token. It provides a fixed read-only live Airtable plan for ci-practice-mp25092, a direct Airtable shared view limited to the two homework action records, the original received Gmail .eml shared with ugiss457@gmail.com, and links to the skill ZIP, instructions, expected output and TEST_EVIDENCE.md. It cannot import, authorise, dispatch or access another namespace.",
   "practice_results": "practice_results.json",
   "fixed_recipient_alias": "HOMEWORK_TEST_INBOX",
   "real_send_limit_per_review": 3,
   "known_limitations": [
-    "Airtable, Make and the dedicated Gmail inbox require the privately supplied reviewer access; no credentials are stored in GitHub.",
+    "The direct Airtable evidence view is read-only and limited to the two homework action records. The original Gmail message is shared only with the reviewer account; no credentials are stored in GitHub.",
     "The Make delivery scenario uses a fixed dedicated test inbox and intentionally refuses recipient addresses supplied by callers.",
     "The submitted delivery receipt was verified in the actual Gmail inbox and recorded through the review-authenticated manual confirmation route. The token-protected callback route for an automatic Make inbox watcher is implemented, but a separate watcher scenario is not currently configured."
   ]
