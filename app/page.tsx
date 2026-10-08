@@ -8,7 +8,7 @@ const euro = (cents: number) => new Intl.NumberFormat("en-IE", { style: "currenc
 export default function Home() {
   const [token, setToken] = useState("");
   const [ledger, setLedger] = useState<Ledger | null>(null);
-  const [namespace, setNamespace] = useState("ci-practice-mp25092");
+  const [namespace, setNamespace] = useState("ci-practice-v3");
   const [asOf, setAsOf] = useState("2027-03-15");
   const [plan, setPlan] = useState<Plan | null>(null);
   const [action, setAction] = useState<ReminderAction | null>(null);
@@ -66,6 +66,11 @@ export default function Home() {
       <p className="intro">A read-first control desk for fictional receivables. Every reminder is calculated in cents, explicitly approved, rechecked against Airtable, and delivered only through the fixed Make route.</p>
       <div className="guardrails"><span>01 · PLAN FIRST</span><span>02 · EXACT APPROVAL</span><span>03 · RECHECK BEFORE SEND</span></div>
     </header>
+
+    <section className="panel start-card">
+      <div><p className="kicker">ASSESSOR START HERE</p><h2>No token or account required</h2><p>Open the restricted read-only review page to inspect the existing six-case plan, live Airtable action evidence, reusable skill and test files. It cannot import, authorise, dispatch or resend.</p></div>
+      <a className="button-link" href="/review">Open reviewer page</a>
+    </section>
 
     <section className="control panel">
       <div><p className="kicker">REVIEW ROUTE</p><h2>Open a test namespace</h2></div>

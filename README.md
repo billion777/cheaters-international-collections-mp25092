@@ -2,6 +2,10 @@
 
 A Vercel-ready fictional collections control for **Maksims Panuskins (mp25092)**. It calculates the supplied accounts-receivable cases in integer cents, stores live records and stable action states in Airtable, and sends only an exactly authorised reminder through a fixed Make/test-inbox route.
 
+## Reviewer start here
+
+Open <https://mp25092-vercel.vercel.app/review>. It requires no token or account and exposes only fixed read-only fictional plan and action evidence. See [START_HERE.md](./START_HERE.md) for direct JSON and submitted-file links.
+
 ## Included
 
 - Next.js review dashboard and scoped JSON API
